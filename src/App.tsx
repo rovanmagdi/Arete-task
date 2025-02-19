@@ -21,7 +21,7 @@ function App() {
   return (
     // query client provider
     <QueryClientProvider client={queryClient}>
-      <NavBar/>
+   
       <AppRouters />
       <ReactQueryDevtools position="left" buttonPosition="bottom-right" />
     </QueryClientProvider>

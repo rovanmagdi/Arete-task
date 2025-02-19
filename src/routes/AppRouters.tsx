@@ -1,6 +1,7 @@
 // routing
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { lazy } from "react";
+import NavBar from "../components/NavBar";
 // lazy loading for modules
 const InfinteScroll = lazy(
   () => import("../modules/InfinteScroll/InfinteScroll")
@@ -11,24 +12,34 @@ const NotFound = lazy(() => import("./NotFound"));
 
 const AppRouters = () => {
   // router config
-  const routerConfig = [
+  const routerConfig =
+  [
     {
-      path: "/",
-      element: <InfinteScroll />,
+      path: '/',
+      element: <NavBar/>,
+      errorElement: <>error</>,
+      children:    [
+          {
+            index: true,
+            element: <InfinteScroll />,
+          },
+          {
+            path: "/pagination",
+            element: <Pagination />,
+          },
+          {
+            path: "/analytics",
+            element: <Analytics />,
+          },
+          {
+            path: "/not-found",
+            element: <NotFound />,
+          },
+        ]
     },
-    {
-      path: "/pagination",
-      element: <Pagination />,
-    },
-    {
-      path: "/infinite-scroll",
-      element: <Analytics />,
-    },
-    {
-      path: "/not-found",
-      element: <NotFound />,
-    },
-  ];
+  ]
+
+
   // router provider
   const router = createBrowserRouter(routerConfig);
 
