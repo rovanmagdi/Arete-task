@@ -1,7 +1,6 @@
-import { useState, useEffect, useCallback, useMemo } from "react";
-import { VariableSizeGrid as Grid } from "react-window";
+import { useState, useEffect, useCallback } from "react";
+import { VariableSizeGrid as Grid } from 'react-window';
 import InfiniteScroll from "react-infinite-scroll-component";
-import AutoSizer from "react-virtualized-auto-sizer";
 
 interface ImageResponse {
   images: Image[];
@@ -37,25 +36,15 @@ export default function ImageGrid() {
   const [offset, setOffset] = useState<number>(0);
   const [hasMore, setHasMore] = useState<boolean>(true);
   const [loading, setLoading] = useState<boolean>(false);
-
+  const [heigth, setHeigth] = useState<number>(0);
   const columnCount = 3;
 
-  // Dynamically generate columnWidths and rowHeights based on images length
-  const columnWidths = useMemo(
-    () =>
-      new Array(images.length)
-        .fill(true)
-        .map(() => 75 + Math.round(Math.random() * 50)),
-    [images.length]
-  );
-
-  const rowHeights = useMemo(
-    () =>
-      new Array(images.length)
-        .fill(true)
-        .map(() => 25 + Math.round(Math.random() * 50)),
-    [images.length]
-  );
+  const columnWidths = new Array(images.length)
+  .fill(true)
+  .map(() => 75 + Math.round(Math.random() * 50));
+const rowHeights = new Array(images.length)
+  .fill(true)
+  .map(() => 25 + Math.round(Math.random() * 50));
 
   const loadMoreImages = useCallback(async () => {
     if (!hasMore) return;
@@ -64,7 +53,8 @@ export default function ImageGrid() {
       const response = await fetchImages(offset);
       setImages((prev) => [...prev, ...response?.images]);
       setOffset((prev) => prev + 20);
-      if (response?.images?.length === response?.total_photos) setHasMore(false);
+      if (response?.images?.length === response?.total_photos)
+        setHasMore(false);
     } catch (error) {
       console.error(error);
     }
@@ -85,39 +75,46 @@ export default function ImageGrid() {
         scrollableTarget={"window"}
       >
         <div className="columns-1 md:columns-2 lg:columns-3 gap-4 w-full">
-          <AutoSizer>
-            {({ height, width }) => (
-              <Grid
-                columnCount={columnCount}
-                columnWidth={(index) => columnWidths[index]}
-                height={height}
-                rowCount={Math.ceil(images.length / columnCount)}
-                rowHeight={(index) => rowHeights[index]}
-                width={width}
-              >
-                {({ columnIndex, rowIndex, style }) => {
-                  const index = rowIndex * columnCount + columnIndex;
-                  if (index >= images.length)
-                    return (
-                      <div
-                        style={style}
-                        className="p-2 animate-pulse bg-gray-200 rounded-lg h-[250px] w-full"
-                      />
-                    );
-                  return (
-                    <div style={style} className="p-2">
-                      <img
-                        src={images[index].url}
-                        alt={images[index].title}
-                        className="w-full h-auto rounded-lg"
-                      />
-                    </div>
-                  );
-                }}
-              </Grid>
-            )}
-          </AutoSizer>
+        <Grid
+          columnCount={columnCount}
+          columnWidth={index => columnWidths[index]}
+          height={1000}
+          rowCount={Math.ceil(images.length / columnCount)}
+          rowHeight={index => rowHeights[index]}
+          width={window.innerWidth}
+        >
+          {({ columnIndex, rowIndex, style }) => {
+            const index = rowIndex * columnCount + columnIndex;
+            if (index >= images.length) return (
+              <div style={style} className="p-2 animate-pulse bg-gray-200 rounded-lg h-[250px] w-full" />
+            );
+            return (
+              <div style={style} className="p-2">
+                <img
+                  src={images[index].url}
+                  alt={images[index].title}
+                  className="w-full h-auto rounded-lg"
+                />
+              </div>
+            );
+          }}
+        </Grid>
         </div>
+        {/* <Grid
+          columnCount={columnCount}
+          columnWidth={200}
+          height={600}
+          rowCount={Math.ceil(images.length / 3)}
+          rowHeight={200}
+          width={600}
+                >
+          {({ columnIndex, rowIndex, style }) => {
+            const index = rowIndex * 3 + columnIndex;
+            if (index >= images.length) return null;
+            return (
+            );
+          }}
+        </Grid> */}
       </InfiniteScroll>
       <button onClick={loadMoreImages} className="mt-4 w-full">
         Load More
