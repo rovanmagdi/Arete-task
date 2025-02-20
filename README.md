@@ -1,4 +1,3 @@
-**# ReactJS Frontend Challenge**
 
 ## **Table of Contents**
 - [Setup Instructions](#setup-instructions)
@@ -10,19 +9,19 @@
 - [Performance Optimizations tech stack](#performance-optimizations-tech-stack)
 - [Challenges ](#challenges)
 
-## **Setup Instructions**
+## **Setup**
 
 1. **Clone the repository:**
   ```sh
    git clone https://github.com/rovanmagdi/Arete-task.git
-   ```
    cd Arete-task
+   ```
   
-2. **Install dependencies:**
+2. **Install node modules:**
   ```sh
    npm install
    ```
-3. **Start the development server:**
+3. **Start  server:**
   ```sh
    npm start
    ```
