@@ -6,7 +6,6 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import AppRouters from "./routes/AppRouters";
 import { lazy } from "react";
 
-const NavBar = lazy(() => import("./components/NavBar"));
 
 function App() {
   // query client
