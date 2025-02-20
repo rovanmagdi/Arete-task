@@ -57,14 +57,7 @@
   - Reset button to restore the default order.
 
 ## **Trade-offs Between Libraries**
-
-| feature | react-window | react-virtualized | 
-|---------|-------------|------------|-----------|
-| Virtualization | react-window | react-virtualized | `react-window` is lighter but less feature-rich. |
-| Virtualization | react-window | react-virtualized | `react-window` is lighter but less feature-rich. |
-
-
-| feature | react-window | react-virtualized | 
+| Feature | react-window | react-virtualized |
 |---------|--------------|-------------------|-----------|
 | Downloads (npm - last month) | ~2.5M+	| ~1.2M+	|
 | Dependencies	| Minimal	| More dependencies, including polyfills	|
