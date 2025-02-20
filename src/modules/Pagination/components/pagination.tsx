@@ -17,8 +17,8 @@ const Pagination = ({
     <div className="flex gap-2 items-center mb-4 justify-end mt-5">
       {/* Previous button */}
       <Button
-        text={<img src={Arrow} alt="next" className="h-4 w-3 rotate-180" />}
-        className="px-4 py-2 bg-gray-200 rounded disabled:opacity-50 disabled:cursor-not-allowed"
+        text={<img src={Arrow} alt="next" className="h-5 w-3 rotate-180" />}
+        className="px-4 py-2 bg-gray-100 rounded disabled:opacity-50 disabled:cursor-not-allowed"
         disabled={page === 1}
         onClick={() => updateParams(Math.max(page - 1, 1))}
       />
@@ -30,7 +30,7 @@ const Pagination = ({
               <button
                 key={pageNumber}
                 className={`px-3 py-1 rounded cursor-pointer ${
-                  page === pageNumber ? "bg-blue-900 text-white" : "bg-gray-200"
+                  page === pageNumber ? "bg-blue-900 text-white" : "bg-gray-100"
                 }`}
                 onClick={() => updateParams(pageNumber)}
               >
@@ -42,7 +42,7 @@ const Pagination = ({
           <>
             <button
               className={`px-3 py-1 rounded cursor-pointer ${
-                page === 1 ? "bg-blue-900 text-white" : "bg-gray-200"
+                page === 1 ? "bg-blue-900 text-white" : "bg-gray-100"
               }`}
               onClick={() => updateParams(1)}
             >
@@ -59,7 +59,7 @@ const Pagination = ({
                   className={`px-3 py-1 rounded cursor-pointer ${
                     page === pageNumber
                       ? "bg-blue-900 text-white"
-                      : "bg-gray-200"
+                      : "bg-gray-100"
                   }`}
                   onClick={() => updateParams(pageNumber)}
                 >
@@ -71,7 +71,7 @@ const Pagination = ({
 
             <button
               className={`px-3 py-1 rounded cursor-pointer ${
-                page === totalPages ? "bg-blue-900 text-white" : "bg-gray-200"
+                page === totalPages ? "bg-blue-900 text-white" : "bg-gray-100"
               }`}
               onClick={() => updateParams(totalPages)}
             >
@@ -82,8 +82,8 @@ const Pagination = ({
       </div>
       {/* Next button */}
       <Button
-        text={<img src={Arrow} alt="next" className="h-4 w-3" />}
-        className="px-4 py-2 bg-gray-200 rounded disabled:opacity-50 disabled:cursor-not-allowed"
+        text={<img src={Arrow} alt="next" className="h-5 w-3" />}
+        className="px-4 py-2 bg-gray-100 rounded disabled:opacity-50 disabled:cursor-not-allowed"
         onClick={() => updateParams(page + 1)}
         disabled={page >= totalPages}
       />
