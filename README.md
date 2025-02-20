@@ -13,16 +13,17 @@
 ## **Setup Instructions**
 
 1. **Clone the repository:**
-  
+  ```sh
    git clone https://github.com/rovanmagdi/Arete-task.git
+   ```
    cd Arete-task
   
 2. **Install dependencies:**
-  
+  ```sh
    npm install
    
 3. **Start the development server:**
-  
+  ```sh
    npm start
    
 
