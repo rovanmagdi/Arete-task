@@ -83,6 +83,6 @@
 
 
 
----
-This project demonstrates best practices in React development, UI/UX design, and performance optimization. 🚀
+
+
 
