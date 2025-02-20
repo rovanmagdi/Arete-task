@@ -59,11 +59,13 @@
 ## **Trade-offs Between Libraries**
 
 
+
+
 | feature | react-window | react-virtualized | 
 |---------|--------------|-------------------|-----------|
 | Downloads (npm - last month) | ~2.5M+	| ~1.2M+	|
 | Dependencies	| Minimal	| More dependencies, including polyfills	|
-| Performance | Faster due to smaller size and optimized rendering | Heavier but supports more features
+| Performance | Faster due to smaller size and optimized rendering | Heavier but supports more features |
 
 ## **Performance Optimizations**
 - **1-** Used virtualization (`react-window`), memoization (`useMemo`,`useCallback`).
