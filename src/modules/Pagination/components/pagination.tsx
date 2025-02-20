@@ -13,6 +13,7 @@ const Pagination = ({
   limits: number[];
   updateParams: (page: number, limit?: number) => void;
 }) => {
+  
   return (
     <div className="flex gap-2 items-center mb-4 justify-end mt-5">
       {/* Previous button */}

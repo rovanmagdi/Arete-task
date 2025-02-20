@@ -29,14 +29,14 @@
 
 ## **Technical Decisions**
 
-<!-- ### **Infinite Scroll (Part 1)**
+### **Infinite Scroll (Part 1)**
 - **Library Used:** `react-window` for list virtualization.
 - **Why:** Efficient rendering of large datasets and reduced memory footprint.
 - **Data Fetching:** Lazy loading images from a mock API.
 - **Performance Features:**
   - Used `useMemo` and `useCallback` to avoid unnecessary re-renders.
   - Debounced scroll events to reduce API calls.
-  - Implemented a "Load More" button for users who prefer manual fetching. -->
+  - Implemented a "Load More" button for users who prefer manual fetching.
 
 ### **Dedicated Pagination (Part 2)**
 - **Library Used:** `react-query` for data fetching and caching.
@@ -57,10 +57,10 @@
   - Reset button to restore the default order.
 
 ## **Trade-offs Between Libraries**
-| Feature | react-window | react-virtualized |
-|---------|--------------|-------------------|-----------|
-| Downloads (npm - last month) | ~2.5M+	| ~1.2M+	|
-| Dependencies	| Minimal	| More dependencies, including polyfills	|
+| Feature | react-window     | react-virtualized                |
+| :-------- | :------- | :------------------------- |
+| Downloads (npm - last month) | ~2.5M+ | ~1.2M+|
+| Dependencies | Minimal | More dependencies, including polyfills |
 | Performance | Faster due to smaller size and optimized rendering | Heavier but supports more features. |
 
 ## **Performance Optimizations**

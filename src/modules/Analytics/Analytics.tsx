@@ -1,30 +1,38 @@
 import React, { useState } from "react";
+// react query for fetch data and store in catcing
 import { useQuery } from "@tanstack/react-query";
+// dnd/kit for drag event
 import { DndContext, closestCenter, DragEndEvent } from "@dnd-kit/core";
+// sorting
 import {
   SortableContext,
   verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
 import { arrayMove } from "@dnd-kit/sortable";
+// component for wrapper drag and drop chart
 import ChartContainer from "./components/ChartContainer";
 import { IChart } from "./types/types";
 import { getDataCharts } from "./requests/requests";
 import Button from "../../components/Button";
+// components for 4 charts
 import BarChartComp from "./components/BarChart";
 import AreaChartComp from "./components/AreaChart";
 import PieChartComp from "./components/PieChart";
 import LineChartComp from "./components/LineChart";
+// import for image
 import Reload from "../../assets/icons/reload.svg";
 
 const initialChart: string[] = ["line", "bar", "pie", "area"];
 
 const Analytics: React.FC = () => {
+  // state for chart sort
   const [chartSort, setChartSort] = useState<string[]>(initialChart);
+  // data from api with query key
   const { data = [], isLoading } = useQuery<IChart[]>({
     queryKey: ["charts"],
     queryFn: getDataCharts,
   });
-
+// function for dragging
   const handleDragEnd = (event: DragEndEvent) => {
     const { active, over } = event;
     if (active?.id !== over?.id) {
@@ -34,6 +42,7 @@ const Analytics: React.FC = () => {
       setChartSort(newOrder);
     }
   };
+  // function for reset chart sort
   const resetOrder = () => setChartSort(initialChart);
 
 
@@ -45,7 +54,6 @@ const Analytics: React.FC = () => {
         className="flex justify-end"
       /></div>
       
-
       <DndContext collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
         <SortableContext
           items={chartSort}
