@@ -6,54 +6,45 @@
   - [Infinite Scroll (Part 1)](#infinite-scroll-part-1)
   - [Dedicated Pagination (Part 2)](#dedicated-pagination-part-2)
   - [Drag-and-Drop Dashboard (Part 3)](#drag-and-drop-dashboard-part-3)
-- [Trade-offs Between Libraries](#trade-offs-between-libraries)
-- [Performance Optimizations](#performance-optimizations)
-- [Challenges Faced](#challenges-faced)
-- [Error Handling and Modularity](#error-handling-and-modularity)
+- [Trade-offs Between Two Libraries](#trade-offs-between-two-libraries)
+- [Performance Optimizations tech stack](#performance-optimizations-tech-stack)
+- [Challenges ](#challenges)
 
 ## **Setup Instructions**
 
 1. **Clone the repository:**
-   ```sh
-   git clone https://github.com/your-repo/frontend-challenge.git
-   cd frontend-challenge
-   ```
+  
+   git clone https://github.com/rovanmagdi/Arete-task.git
+   cd Arete-task
+  
 2. **Install dependencies:**
-   ```sh
+  
    npm install
-   ```
+   
 3. **Start the development server:**
-   ```sh
+  
    npm start
-   ```
-4. **Run tests:**
-   ```sh
-   npm test
-   ```
-5. **Build for production:**
-   ```sh
-   npm run build
-   ```
+   
+
 
 ## **Technical Decisions**
 
-### **Infinite Scroll (Part 1)**
+<!-- ### **Infinite Scroll (Part 1)**
 - **Library Used:** `react-window` for list virtualization.
 - **Why:** Efficient rendering of large datasets and reduced memory footprint.
 - **Data Fetching:** Lazy loading images from a mock API.
 - **Performance Features:**
   - Used `useMemo` and `useCallback` to avoid unnecessary re-renders.
   - Debounced scroll events to reduce API calls.
-  - Implemented a "Load More" button for users who prefer manual fetching.
+  - Implemented a "Load More" button for users who prefer manual fetching. -->
 
 ### **Dedicated Pagination (Part 2)**
 - **Library Used:** `react-query` for data fetching and caching.
 - **Pagination Strategy:**
   - Implemented both `page` and `limit` query parameters.
-  - Optionally used `previousId` and `nextId` for cursor-based pagination.
 - **Why:** Efficient cache management and reduced redundant API calls.
 - **Performance Features:**
-  - Cached previous pages for faster navigation.
+  - Cached previous pages with react-query for faster navigation.
   - Implemented skeleton loaders to improve perceived performance.
 
 ### **Drag-and-Drop Dashboard (Part 3)**
@@ -75,9 +66,8 @@
 | Charting | recharts | chart.js | `recharts` offers better component-based integration. |
 
 ## **Performance Optimizations**
-- **Part 1:** Used virtualization (`react-window`), memoization (`useMemo`), and debounce (`lodash.debounce`).
+- **Part 1:** Used virtualization (`react-window`), memoization (`useMemo`,`useCallback`).
 - **Part 2:** Cached API responses with `react-query` to avoid refetching previously loaded pages.
-- **Part 3:** Minimized unnecessary re-renders by optimizing state updates in `react-beautiful-dnd`.
 
 ## **Challenges Faced**
 
@@ -93,10 +83,7 @@
 - Handling persistence of reordered charts.
 - Ensuring drag-and-drop remains smooth on mobile devices.
 
-## **Error Handling and Modularity**
-- Implemented `ErrorBoundary` to catch rendering issues.
-- Created modular components for reusability (e.g., `ImageGrid`, `PaginationControls`, `ChartContainer`).
-- Used context API for global state management where necessary.
+
 
 ---
 This project demonstrates best practices in React development, UI/UX design, and performance optimization. 🚀
