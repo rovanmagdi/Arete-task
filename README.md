@@ -61,9 +61,7 @@
 | Feature | Library Used | Alternative | Trade-off |
 |---------|-------------|------------|-----------|
 | Virtualization | react-window | react-virtualized | `react-window` is lighter but less feature-rich. |
-| Pagination | react-query | swr | `react-query` provides better cache control. |
-| Drag-and-Drop | react-beautiful-dnd | dnd-kit | `dnd-kit` is more modern but `react-beautiful-dnd` is widely adopted. |
-| Charting | recharts | chart.js | `recharts` offers better component-based integration. |
+
 
 ## **Performance Optimizations**
 - **Part 1:** Used virtualization (`react-window`), memoization (`useMemo`,`useCallback`).
