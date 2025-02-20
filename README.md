@@ -1,12 +1,12 @@
 
 ## **Table of Contents**
-- [Setup Instructions](#setup-instructions)
+- [Setup](#setup)
 - [Technical Decisions](#technical-decisions)
   - [Infinite Scroll (Part 1)](#infinite-scroll-part-1)
   - [Dedicated Pagination (Part 2)](#dedicated-pagination-part-2)
   - [Drag-and-Drop Dashboard (Part 3)](#drag-and-drop-dashboard-part-3)
 - [Trade-offs Between Two Libraries](#trade-offs-between-two-libraries)
-- [Performance Optimizations tech stack](#performance-optimizations-tech-stack)
+- [Performance Optimizations](#performance-optimizations)
 - [Challenges ](#challenges)
 
 ## **Setup**
@@ -67,7 +67,7 @@
 - **Part 1:** Used virtualization (`react-window`), memoization (`useMemo`,`useCallback`).
 - **Part 2:** Cached API responses with `react-query` to avoid refetching previously loaded pages.
 
-## **Challenges Faced**
+## **Challenges**
 
 ### **Infinite Scroll (Part 1)**
 - Preventing duplicate API calls when users scrolled too quickly.
