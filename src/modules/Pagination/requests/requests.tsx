@@ -1,4 +1,4 @@
-import { Image, ImageResponse } from "../types/types";
+import { Image, ImageResponse } from "../../../types/global";
 
 export const getGallary = async (
     page: number,

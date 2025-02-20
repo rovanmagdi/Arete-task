@@ -2,6 +2,8 @@ import { useQuery } from "@tanstack/react-query";
 import { getGallary } from "./requests/requests";
 import { useSearchParams } from "react-router-dom";
 import Pagination from "./components/pagination";
+import ImageItem from "../../components/ImageItem";
+import Sekelton from "../../components/Sekelton";
 
 const Posts = () => {
   // search params
@@ -28,15 +30,11 @@ const Posts = () => {
 
   return (
     <div className="container mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-4">Posts Gallery</h1>
       {/* loading until data return */}
       {isLoading && (
         <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-4">
           {Array.from({ length: limit }).map((_, index) => (
-            <div
-              key={index}
-              className="p-4 rounded-lg shadow animate-pulse bg-gray-200 h-52"
-            />
+            <Sekelton key={index}  />
           ))}
         </div>
       )}
@@ -44,9 +42,9 @@ const Posts = () => {
       {error && <p className="text-red-500">Error fetching posts</p>}
 
       <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-4">
-        {data?.images?.map((post) => (
-          <img key={post.id} src={post.url} alt={post.title} />
-        ))}
+        {data?.images?.map((image) => (
+  <ImageItem key={image.id} image={image} />
+          ))}
       </div>
 
       {/* Pagination component */}
