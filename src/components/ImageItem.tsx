@@ -6,7 +6,7 @@ const ImageItem = memo(({ image }: { image: Image }) => {
     const [loaded, setLoaded] = useState(false);
   
     return (
-      <div className="mb-4 ">
+      <div >
         <img
           loading="lazy"
           src={image.url}

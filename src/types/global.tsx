@@ -8,3 +8,8 @@ export interface Image {
   title: string;
   url: string;
 }
+
+export interface Chart {
+  name: string;
+  value: number;
+}

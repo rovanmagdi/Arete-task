@@ -10,7 +10,7 @@ const Posts = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   // page and limit
   const page = Number(searchParams.get("page")) || 1;
-  const limit = Number(searchParams.get("limit")) || 10;
+  const limit = Number(searchParams.get("limit")) || 9;
   const limits = [10, 25, 50];
   //  fetching data from api
   const {
