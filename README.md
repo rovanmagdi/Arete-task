@@ -30,13 +30,16 @@
 ## **Technical Decisions**
 
 ### **Infinite Scroll (Part 1)**
-- **Library Used:** `react-window` for list virtualization.
-- **Why:** Efficient rendering of large datasets and reduced memory footprint.
+- **Library Used:** Although the task recommended using react-window or react-virtualized to implement virtualization and optimize performance for large datasets, I encountered significant issues with synchronizing full-page scrolling and maintaining a responsive grid layout  (flickering, hidden cells, and complex scroll offset management) .
+- **Decision:** To meet the requirements for a Pinterest-style grid that uses the native page scroll, I opted to use react-infinite-scroll-component instead
+- **Why?** 
+    - **Simplicity**: It provided a straightforward API to trigger data fetching when the user reaches 80% of the page height without requiring an internal scroll container.
+    - **Debounced** scroll events to reduce redundant API calls
+    - Although **list virtualization** was not implemented in this task, memoization techniques (useMemo, useCallback) were still used to avoid unnecessary re-renders.
+    -  It eliminated the **rendering issues** encountered with virtualization libraries in this context, such as duplicate API calls and flickering when synchronizing scroll positions.
+    
 - **Data Fetching:** Lazy loading images from a mock API.
-- **Performance Features:**
-  - Used `useMemo` and `useCallback` to avoid unnecessary re-renders.
-  - Debounced scroll events to reduce API calls.
-  - Implemented a "Load More" button for users who prefer manual fetching.
+
 
 ### **Dedicated Pagination (Part 2)**
 - **Library Used:** `react-query` for data fetching and caching.
@@ -46,6 +49,7 @@
 - **Performance Features:**
   - Cached previous pages with react-query for faster navigation.
   - Implemented skeleton loaders to improve perceived performance.
+
 
 ### **Drag-and-Drop Dashboard (Part 3)**
 - **Library Used:** `react-beautiful-dnd` for drag-and-drop functionality.
